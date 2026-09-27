@@ -2646,7 +2646,7 @@ input, select, textarea {
 				width: 50%;
 				display: block;
 				margin: 0 auto;
-				border-radius: 16px;
+				border-radius: 30px;
 			}
 
 		@media screen and (max-width: 736px) {
