@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>U.S. Retail Sales Analysis | Grace Clinard</title><style>
+:root{--ink:#182c35;--muted:#536872;--accent:#16756a;--paper:#f4f6f3}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}a{color:var(--accent)}header{background:#142f38;color:white;padding:64px max(24px,calc((100vw - 1080px)/2)) 54px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#9bd3c7}h1{font-size:clamp(34px,6vw,62px);line-height:1.1;letter-spacing:-2px;max-width:780px;margin:18px 0}header p{max-width:690px;color:#d7e5e6}.tags span{display:inline-block;border:1px solid #59757a;border-radius:30px;padding:4px 12px;margin:5px 5px 0 0;font-size:13px}main{max-width:1128px;margin:auto;padding:36px 24px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}.metric,.panel{background:white;border:1px solid #dce4df;border-radius:14px;padding:24px}.metric strong{display:block;font-size:30px;letter-spacing:-1px}.metric span,.caption{color:var(--muted);font-size:13px}h2{font-size:27px;letter-spacing:-.6px;margin:0 0 12px}h3{font-size:19px;margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0}.barrow{display:grid;grid-template-columns:70px 1fr 90px;gap:12px;align-items:center;margin:20px 0;font-size:14px}.track{height:22px;background:#edf2ed;border-radius:4px;overflow:hidden}.fill{background:#238577;height:100%}.barrow strong{text-align:right;font-size:13px}.insight{border-left:3px solid #238577;padding-left:16px;color:#354f57}section{margin:38px 0}li{margin:8px 0}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid #e2e8e4}th{background:#edf3ee}td:last-child,th:last-child{text-align:right}details{margin:20px 0}summary{cursor:pointer;font-weight:650;padding:12px 0;color:var(--accent)}pre{background:#122a33;color:#e7f0ec;padding:24px;border-radius:12px;overflow:auto;font-size:13px;line-height:1.65}footer{border-top:1px solid #dce4df;padding-top:24px;font-size:13px;color:var(--muted)}.links a{display:inline-block;margin:8px 20px 0 0}@media(max-width:700px){header{padding:36px 24px}.metrics{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.panel{padding:20px}.barrow{grid-template-columns:60px 1fr 80px;gap:8px}}@media print{header{background:white;color:#182c35;padding:20px 0}header p,.eyebrow{color:#536872}body{background:white}main{padding:12px 0}.panel,.metric{break-inside:avoid}details{display:none}}
+</style></head><body><header><div class="eyebrow">Grace Clinard · Python analytics case study</div><h1>U.S. retail sales,<br>from rows to insights.</h1><p>Exploring geographic performance, annual sales trends, and data quality across 9,800 retail order line items.</p><div class="tags"><span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Seaborn</span><span>Exploratory analysis</span></div></header><main>
+<div class="metrics"><div class="metric"><strong>$2.26M</strong><span>Total recorded sales</span></div><div class="metric"><strong>9,800</strong><span>Order line items · 4,922 orders</span></div><div class="metric"><strong>793</strong><span>Unique customers</span></div><div class="metric"><strong>+50.5%</strong><span>Sales change · 2015 to 2018</span></div></div>
+<section><h2>The question</h2><p>Which regions and years generated the most sales, and what preparation was needed to make the data usable? This exploratory project uses Python to inspect the dataset, standardize dates, create useful fields, and summarize sales by region, year, and state.</p></section>
+<div class="grid"><article class="panel"><h3>Where sales concentrate</h3><div class="bars"><div class="barrow"><span>West</span><div class="track"><div class="fill" style="width:100.00%"></div></div><strong>$710,220</strong></div><div class="barrow"><span>East</span><div class="track"><div class="fill" style="width:94.27%"></div></div><strong>$669,519</strong></div><div class="barrow"><span>Central</span><div class="track"><div class="fill" style="width:69.37%"></div></div><strong>$492,647</strong></div><div class="barrow"><span>South</span><div class="track"><div class="fill" style="width:54.79%"></div></div><strong>$389,151</strong></div></div><p class="insight">The West leads with 31.4% of recorded sales. Together, the West and East contribute 61.0%.</p></article><article class="panel"><h3>How sales changed</h3><div class="bars"><div class="barrow"><span>2015</span><div class="track"><div class="fill" style="width:66.46%"></div></div><strong>$479,856</strong></div><div class="barrow"><span>2016</span><div class="track"><div class="fill" style="width:63.63%"></div></div><strong>$459,436</strong></div><div class="barrow"><span>2017</span><div class="track"><div class="fill" style="width:83.12%"></div></div><strong>$600,193</strong></div><div class="barrow"><span>2018</span><div class="track"><div class="fill" style="width:100.00%"></div></div><strong>$722,052</strong></div></div><p class="insight">2018 has the highest recorded sales; 2016 has the lowest. Sales increased 20.3% from 2017 to 2018.</p></article></div>
+<section class="panel"><h2>State-level performance</h2><p>California generated the most sales, followed by New York and Texas. These totals describe revenue concentration, rather than profitability or market penetration.</p><div class="bars"><div class="barrow"><span>California</span><div class="track"><div class="fill" style="width:100.00%"></div></div><strong>$446,306</strong></div><div class="barrow"><span>New York</span><div class="track"><div class="fill" style="width:68.64%"></div></div><strong>$306,361</strong></div><div class="barrow"><span>Texas</span><div class="track"><div class="fill" style="width:37.77%"></div></div><strong>$168,573</strong></div><div class="barrow"><span>Washington</span><div class="track"><div class="fill" style="width:30.29%"></div></div><strong>$135,207</strong></div><div class="barrow"><span>Pennsylvania</span><div class="track"><div class="fill" style="width:26.05%"></div></div><strong>$116,277</strong></div></div><p class="caption">Top five state-level entries by sales. Amounts rounded to the nearest dollar.</p><details><summary>View all 49 geographic entries</summary><table><thead><tr><th>State / district</th><th>Sales</th></tr></thead><tbody><tr><td>California</td><td>$446,306.46</td></tr><tr><td>New York</td><td>$306,361.15</td></tr><tr><td>Texas</td><td>$168,572.53</td></tr><tr><td>Washington</td><td>$135,206.85</td></tr><tr><td>Pennsylvania</td><td>$116,276.65</td></tr><tr><td>Florida</td><td>$88,436.53</td></tr><tr><td>Illinois</td><td>$79,236.52</td></tr><tr><td>Michigan</td><td>$76,136.07</td></tr><tr><td>Ohio</td><td>$75,130.35</td></tr><tr><td>Virginia</td><td>$70,636.72</td></tr><tr><td>North Carolina</td><td>$55,165.96</td></tr><tr><td>Indiana</td><td>$48,718.40</td></tr><tr><td>Georgia</td><td>$48,219.11</td></tr><tr><td>Kentucky</td><td>$36,458.39</td></tr><tr><td>Arizona</td><td>$35,272.66</td></tr><tr><td>New Jersey</td><td>$34,610.97</td></tr><tr><td>Colorado</td><td>$31,841.60</td></tr><tr><td>Wisconsin</td><td>$31,173.43</td></tr><tr><td>Tennessee</td><td>$30,661.87</td></tr><tr><td>Minnesota</td><td>$29,863.15</td></tr><tr><td>Massachusetts</td><td>$28,634.43</td></tr><tr><td>Delaware</td><td>$27,323.00</td></tr><tr><td>Maryland</td><td>$23,705.52</td></tr><tr><td>Rhode Island</td><td>$22,525.03</td></tr><tr><td>Missouri</td><td>$22,205.15</td></tr><tr><td>Oklahoma</td><td>$19,683.39</td></tr><tr><td>Alabama</td><td>$19,510.64</td></tr><tr><td>Oregon</td><td>$17,284.46</td></tr><tr><td>Nevada</td><td>$16,729.10</td></tr><tr><td>Connecticut</td><td>$13,384.36</td></tr><tr><td>Arkansas</td><td>$11,678.13</td></tr><tr><td>Utah</td><td>$11,220.06</td></tr><tr><td>Mississippi</td><td>$10,771.34</td></tr><tr><td>Louisiana</td><td>$9,131.05</td></tr><tr><td>Vermont</td><td>$8,929.37</td></tr><tr><td>South Carolina</td><td>$8,481.71</td></tr><tr><td>Nebraska</td><td>$7,464.93</td></tr><tr><td>New Hampshire</td><td>$7,292.52</td></tr><tr><td>Montana</td><td>$5,589.35</td></tr><tr><td>New Mexico</td><td>$4,783.52</td></tr><tr><td>Iowa</td><td>$4,443.56</td></tr><tr><td>Idaho</td><td>$4,382.49</td></tr><tr><td>Kansas</td><td>$2,914.31</td></tr><tr><td>District of Columbia</td><td>$2,865.02</td></tr><tr><td>Wyoming</td><td>$1,603.14</td></tr><tr><td>South Dakota</td><td>$1,315.56</td></tr><tr><td>Maine</td><td>$1,270.53</td></tr><tr><td>West Virginia</td><td>$1,209.82</td></tr><tr><td>North Dakota</td><td>$919.91</td></tr></tbody></table></details></section>
+<section><h2>Approach &amp; preparation</h2><div class="grid"><article class="panel"><h3>01 / Inspect the data</h3><p>Reviewed sample records, column types, descriptive statistics, missing values, and unique values. The original inspection identified 11 missing postal codes and 18 input columns.</p></article><article class="panel"><h3>02 / Transform &amp; summarize</h3><p>Parsed order and shipment dates using day/month/year, calculated order-to-shipment days, extracted order year, removed the country and exported row-number columns, and grouped sales by geography and year.</p></article></div></section>
+<section class="panel"><h2>Interpretation &amp; limitations</h2><ul><li>Regional sales concentration can guide further investigation, but does not establish where additional investment will be profitable.</li><li>Order rows are line items: the dataset contains 9,800 rows and 4,922 distinct order IDs.</li><li>The export reports 49 unique state-level entries, including the District of Columbia; it does not cover every U.S. state.</li><li>Sales measure dollar value, not units sold. Profit, margin, and causal explanations are not established by this analysis.</li><li>The original notebook also explored correlations and order-to-shipment timing; no conclusions about those relationships are asserted here.</li></ul><p class="caption">This presentation uses the saved outputs in the original Markdown export. The underlying CSV was not supplied, so the full analysis was not rerun. Regional, annual, and state sales totals were checked for consistency.</p></section>
+<section><h2>Explore the implementation</h2><p>The original Python cells are preserved below, with the machine-specific input path replaced by a portable filename. They require the source CSV and may need dependency-version updates before rerunning.</p><details><summary>Show original analysis code</summary><pre><code>import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+
+
+df= pd.read_csv(&#x27;Supermarket_sales.csv&#x27;)
+df.head()
+
+
+df.tail()
+
+
+df.info()
+
+
+df.describe()
+
+
+df.isnull().sum()
+
+
+df.nunique()
+
+
+df[&#x27;Order Date&#x27;] = pd.to_datetime(df[&#x27;Order Date&#x27;], format= &quot;%d/%m/%Y&quot;)
+df[&#x27;Ship Date&#x27;] = pd.to_datetime(df[&#x27;Ship Date&#x27;], format= &quot;%d/%m/%Y&quot;)
+df[&#x27;Waiting Period&#x27;] = (df[&#x27;Ship Date&#x27;] - df[&#x27;Order Date&#x27;]).dt.days
+column_to_move = df.pop(&#x27;Waiting Period&#x27;)
+df.insert(4,&#x27;Waiting Period&#x27;, column_to_move)
+df.head()
+
+
+df = df.drop([&#x27;Country&#x27;, &#x27;Unnamed: 0&#x27;], axis=1)
+
+
+df = df.set_index(&#x27;Order ID&#x27;)
+
+
+df[&#x27;Order Year&#x27;]= df[&#x27;Order Date&#x27;].dt.year
+df.head()
+
+
+sns.heatmap(df.corr(), annot = True)
+
+plt.show()
+
+
+df2 = df.groupby(&#x27;Region&#x27;).sum(&#x27;Sales&#x27;)
+df2 = df2.drop([&#x27;Order Year&#x27;,&#x27;Postal Code&#x27;,&#x27;Waiting Period&#x27;], axis = 1)
+df2 = df2.sort_values([&#x27;Sales&#x27;], ascending=False)
+df2
+
+
+df2.plot(kind = &#x27;bar&#x27;)
+
+
+df3 = df.groupby(&#x27;Order Year&#x27;)[df.columns[15:16]].sum(&#x27;Sales&#x27;)
+df3
+
+
+df.columns
+
+
+df3.plot()
+
+
+state_sales = df.groupby([&#x27;State&#x27;])[&#x27;Sales&#x27;].sum()
+
+print(state_sales)
+
+
+state_sales.plot(kind = &#x27;bar&#x27;)
+
+
+df[&#x27;Order Year&#x27;].info()
+
+
+state_sales = df.groupby(&#x27;State&#x27;)[&#x27;Sales&#x27;].sum()
+
+print(state_sales)
+</code></pre></details><div class="links"><a href="https://github.com/graceclinard30/graceclinard30.github.io/blob/main/Supermarket%20Sales%20(USA).md">View original notebook export ↗</a><a href="https://graceclinard30.github.io/">Grace’s portfolio ↗</a></div></section><footer>Grace Clinard · U.S. retail sales analysis · Source project: “Supermarket Sales (USA)”<br>Charts reconstructed from the project’s saved aggregate outputs. This standalone page requires no external libraries or image files.</footer></main></body></html>
